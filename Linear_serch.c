@@ -1,15 +1,12 @@
 #include<stdio.h>
 int main()
-{
-    int n=10,i,search_Value,value=-2;
-    printf("Enter number of item : ");
-    int arr[]={1,2,3,4,5,6,7,8,9,10};
+{    
+    int arr[]={1,2,3,4,5,6,7,8,9,10},i,value=-2;
 
-    printf("Enter search iteam : ");
-    //scanf("%d",&search_Value);
-    for(i=0;i<n;i++)
+    
+    for(i=0;i<10;i++)
     {
-        if(arr[i]==search_Value){
+        if(arr[i]==9){
             value=i;
             break;
         }
