@@ -1,0 +1,143 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<string.h>
+
+void Create_Student_Link_List();
+void display();
+
+struct Student
+{
+    char name[20];
+    int id;
+    int room;
+    int set;
+    char pay[2];
+    struct Student *next;
+
+}*head,*temp,*newnode;
+
+char name[20];
+int id;
+int room;
+int set;
+char pay[2];
+void Create_Student_Link_List();
+int number_of_students,pyment;
+
+int main()
+{
+    Create_Student_Link_List();
+    display();
+    return 0;
+}
+void Create_Student_Link_List()
+{
+    printf("Enter number of student : ");
+    scanf("%d",&number_of_students);
+    head = (struct Student*)malloc(sizeof(struct Student));
+
+    printf("\nEnter Student name : ");
+    scanf("%s",&name);
+    strcpy(head->name,name);
+
+    printf("\nEnter Student id : ");
+    scanf("%d",&id);
+    head->id=id;
+
+    printf("\nEnter Hall room no : ");
+    scanf("%d",&room);
+    head->room=room;
+    y:
+    printf("Enter room set no : ");
+    scanf("%d",&set);
+    if(set==1||set==2||set==3|set==4)
+    {
+        head->set=set;
+    }
+    else
+    {
+        printf("\nPlz enter between 1 to 4\n");
+        goto y;
+    }
+    x:
+    printf("\nEnter pyment clearence : \n1.yes 2.No\n");
+    scanf("%d",&pyment);
+    if(pyment==1)
+    {
+        strcpy(head->pay,"Yes");
+    }
+    else if(pyment==2)
+    {
+       strcpy(head->pay,'No');
+    }
+    else
+    {
+
+        printf("Plz enter 1 or 2\n");
+        goto x;
+    }
+    head->next=NULL;
+    temp=head;
+    for(int i=2; i<=number_of_students; i++)
+    {
+        newnode = (struct Student*)malloc(sizeof(struct Student));
+        printf("\nEnter Student name : ");
+        scanf("%s",&name);
+        strcpy(newnode->name,name);
+
+        printf("\nEnter Student id : ");
+        scanf("%d",&id);
+        newnode->id=id;
+
+        printf("\nEnter Hall room no : ");
+        scanf("%d",&room);
+        newnode->room=room;
+
+        b:
+        printf("Enter room set no : ");
+        scanf("%d",&set);
+        if(set==1||set==2||set==3|set==4)
+        {
+            newnode->set=set;
+        }
+        else
+        {
+            printf("\nPlz enter between 1 to 4\n");
+            goto b;
+        }
+        a:
+        printf("\nEnter pyment clearence : \n1.yes 2.No\n");
+        scanf("%d",&pyment);
+        if(pyment==1)
+        {
+           strcpy(newnode->pay,"Yes");
+        }
+        else if(pyment==2)
+        {
+            strcpy(newnode->pay,"No");
+        }
+        else
+        {
+            printf("Plz enter 1 or 2\n");
+            goto a;
+        }
+
+        newnode->next=NULL;
+        temp->next=newnode;
+        temp=temp->next;
+    }
+
+}
+void display()
+{
+    temp = head;
+    while(temp->next!=NULL){
+        printf("\n\nStudent name : %s\n",temp->name);
+        printf("\n\nStudent id : %d\n",temp->id);
+        printf("\n\nStudent room : %d\n",temp->room);
+        printf("\n\nStudent set : %d\n",temp->set);
+        printf("\n\nStudent pay : %s\n",temp->pay);
+        temp= temp->next;
+    }
+}
